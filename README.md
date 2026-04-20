@@ -1,12 +1,4 @@
-# Proyecto_BasedeDatos
-Repositorio para organizarse en el proyecto de base de datos.
+Codigos temporales:
 
 
-Integrantes:
-
-Adriel Fux
-Santino Mendez
-Elena Martinez
-Benicio Longo
-
-.
+-----------------------------------------------------------
