@@ -1,0 +1,18 @@
+create database CAMPEONATOS;
+use CAMPEONATOS;
+
+create table Estadios(
+ID_Estadio int primary key not null auto_increment,
+Nombre varchar(25),
+Ubicacion varchar(25)
+);
+
+create table Equipos(
+ID_Equipo int primary key not null auto_increment,
+Nombre varchar(25)
+);
+
+create table Jugadores(
+ID_Jugador int primary key not null auto_increment,
+Nombre varchar(25)
+);
