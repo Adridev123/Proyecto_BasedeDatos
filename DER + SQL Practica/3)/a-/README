@@ -1,0 +1,2 @@
+No se porque el DER tiene en la tabla de Goles y en el campo "Minuto" una FK como si viniera de otra tabla, por mas que
+borre el archivo y suba el DER corregido, sigue con el FK.
