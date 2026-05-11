@@ -1,0 +1,17 @@
+create database EMPRESA;
+use EMPRESA;
+
+create table Personajes(
+ID_Personaje int not null primary key auto_increment,
+Nombre varchar(30),
+Edad int(2),
+Genero enum("M", "F", "Otro")
+);
+
+create table Episodios(
+ID_Episodio int not null primary key auto_increment,
+Cantidad int(4),
+Nombre varchar(20),
+Descripcion varchar(35),
+Puntuacion
+);
