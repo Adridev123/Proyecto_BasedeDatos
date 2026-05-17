@@ -70,10 +70,26 @@ foreign key(ID_Serie) references Series(ID_Serie)
 
 use series;
 
-select into Generos(Nombre)
+insert into Generos(Nombre)
 values
-("Sci-Fi");
+("Sci-Fi"),
+("Drama"),
+("Post-Apoc"),
+("Accion"),
+("Antologia"),
+("Comedia"),
+("Suspenso"),
+("Intriga");
 
-select into Series(Nombre, Año_Lanzamiento, Presupuesto, ID_Genero, ID_Director)
+insert into Series(Nombre, Año_Lanzamiento, Presupuesto, ID_Genero, ID_Director)
 values
-("Stranger things", 2016, "usd $30.000.000", 1)
+("Stranger things", 2016, "usd $30.000.000", 1, "Duffer Brothers"),
+("The Bear", 2022, "usd $12.000.000", 2, "Christopher Storer"),
+("The Last Of Us", 2023, "usd $100.000.000", 3, "Craig Mazin"),
+("Succession", 2018, "usd $90.000.000", 2, "Mark Mylod"),
+("The Boys", 2019, "usd $11.000.000", 4, "Eric Kripke"),
+("Black Mirror", 2011, "usd $5.000.000", 5, "Charlie Brooker"),
+("Ted Lasso", 2020, "usd $15.000.000", 6, "Declan Lowney"),
+("Severance", 2022, "usd $40.000.000", 7, "Ben Stiller"),
+("Fallout", 2024, "usd $150.000.000", 1, "Jonathan Nolan"),
+("Dark", 2017, "usd $18.000.000", 8, "Baranbo Odar");
