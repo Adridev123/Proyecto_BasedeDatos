@@ -1,3 +1,4 @@
+
 create database seriess;
 use seriess;
 
@@ -21,20 +22,12 @@ create table Series
     Nombre varchar(100),
     Año_Lanzamiento year,
     Presupuesto varchar(25),
+    Plataforma varchar(25),
     ID_Genero int not null,
     ID_Director int not null,
     Puntuacion int,
     foreign key(ID_Genero) references Generos(ID_Genero),
     foreign key(ID_Director) references Directores(ID_Director)
-);
-
--- Aquí estaba el detalle: Se definió como "Plataformas"
-create table Plataformas
-(
-    ID_Plataforma int not null primary key auto_increment,
-    Nombre varchar(50),
-    ID_Serie int not null,
-    foreign key(ID_Serie) references Series(ID_Serie)
 );
 
 create table Temporadas
@@ -69,8 +62,6 @@ create table Episodios
     foreign key(ID_Serie) references Series(ID_Serie)
 );
 
--- INSERCIÓN DE DATOS
-
 insert into Generos(Nombre)
 values
 ("Sci-Fi"), ("Drama"), ("Post-Apoc"), ("Accion"), 
@@ -89,32 +80,18 @@ values
 ("Jonathan Nolan", 48, "$900.000"),
 ("Baranbo Odar", 47, "$500.000");
 
-insert into Series(Nombre, Año_Lanzamiento, Presupuesto, ID_Genero, ID_Director)
+insert into Series(Nombre, Año_Lanzamiento, Presupuesto, Plataforma, ID_Genero, ID_Director)
 values
-("Stranger things", 2016, "usd $30.000.000", 1, 1),
-("The Bear", 2022, "usd $12.000.000", 2, 2),
-("The Last Of Us", 2023, "usd $100.000.000", 3, 3),
-("Succession", 2018, "usd $90.000.000", 2, 4),
-("The Boys", 2019, "usd $11.000.000", 4, 5),
-("Black Mirror", 2011, "usd $5.000.000", 5, 6),
-("Ted Lasso", 2020, "usd $15.000.000", 6, 7),
-("Severance", 2022, "usd $40.000.000", 7, 8),
-("Fallout", 2024, "usd $150.000.000", 1, 9),
-("Dark", 2017, "usd $18.000.000", 8, 10);
-
--- CORREGIDO: Ahora apunta a "Plataformas" en plural
-insert into Plataformas(Nombre, ID_Serie)
-values
-("Netflix", 1),
-("Disney +", 2),
-("Max", 3),
-("Max", 4),
-("Prime Video", 5),
-("Netflix", 6),
-("Apple TV", 7),
-("Apple TV", 8),
-("Prime Video", 9),
-("Netflix", 10);
+("Stranger things", 2016, "usd $30.000.000", "Netflix", 1, 1),
+("The Bear", 2022, "usd $12.000.000", "Disney", 2, 2),
+("The Last Of Us", 2023, "usd $100.000.000", "Max", 3, 3),
+("Succession", 2018, "usd $90.000.000", "Max", 2, 4),
+("The Boys", 2019, "usd $11.000.000", "Prime Video", 4, 5),
+("Black Mirror", 2011, "usd $5.000.000", "Netflix", 5, 6),
+("Ted Lasso", 2020, "usd $15.000.000", "Apple TV", 6, 7),
+("Severance", 2022, "usd $40.000.000", "Apple TV", 7, 8),
+("Fallout", 2024, "usd $150.000.000", "Prime Video", 1, 9),
+("Dark", 2017, "usd $18.000.000", "Netflix", 8, 10);
 
 insert into Temporadas(Numero, Nombre_Temporada, Descripcion, ID_Serie)
 values
@@ -157,3 +134,6 @@ values
 
 SELECT Genero, COUNT(Nombre) as Cantidad FROM Personajes GROUP BY Genero;
 
+SELECT Directores.Nombre FROM Directores
+INNER JOIN Series ON Directores.ID_Director = Series.ID_Director
+WHERE Series.Plataforma = 'Prime Video';
