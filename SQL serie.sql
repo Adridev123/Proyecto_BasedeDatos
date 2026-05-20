@@ -155,4 +155,5 @@ values
 (109, "Lo que somos", 2026, 9, 8),
 (110, "El fin", 2011, 10, 9);
 
-select count(Genero)
+SELECT Genero, COUNT(Nombre) as Cantidad FROM Personajes GROUP BY Genero;
+
