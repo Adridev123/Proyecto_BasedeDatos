@@ -1,4 +1,3 @@
-
 create database seriess;
 use seriess;
 
@@ -21,7 +20,7 @@ create table Series
     ID_Serie int not null primary key auto_increment,
     Nombre varchar(100),
     Año_Lanzamiento year,
-    Presupuesto varchar(25),
+    Presupuesto int(199),
     Plataforma varchar(25),
     ID_Genero int not null,
     ID_Director int not null,
@@ -56,6 +55,7 @@ create table Episodios
     Numero int,
     Nombre varchar(100),
     Estreno year,
+    Puntuacion float(2),
     ID_Temporada int not null,
     ID_Serie int not null,
     foreign key(ID_Temporada) references Temporadas(ID_Temporada),
@@ -82,16 +82,16 @@ values
 
 insert into Series(Nombre, Año_Lanzamiento, Presupuesto, Plataforma, ID_Genero, ID_Director)
 values
-("Stranger things", 2016, "usd $30.000.000", "Netflix", 1, 1),
-("The Bear", 2022, "usd $12.000.000", "Disney", 2, 2),
-("The Last Of Us", 2023, "usd $100.000.000", "Max", 3, 3),
-("Succession", 2018, "usd $90.000.000", "Max", 2, 4),
-("The Boys", 2019, "usd $11.000.000", "Prime Video", 4, 5),
-("Black Mirror", 2011, "usd $5.000.000", "Netflix", 5, 6),
-("Ted Lasso", 2020, "usd $15.000.000", "Apple TV", 6, 7),
-("Severance", 2022, "usd $40.000.000", "Apple TV", 7, 8),
-("Fallout", 2024, "usd $150.000.000", "Prime Video", 1, 9),
-("Dark", 2017, "usd $18.000.000", "Netflix", 8, 10);
+("Stranger things", 2016, 30000000, "Netflix", 1, 1),
+("The Bear", 2022, 12000000, "Disney", 2, 2),
+("The Last Of Us", 2023, 100000000, "Max", 3, 3),
+("Succession", 2018, 90000000, "Max", 2, 4),
+("The Boys", 2019, 11000.000, "Prime Video", 4, 5),
+("Black Mirror", 2011, 5000000, "Netflix", 5, 6),
+("Ted Lasso", 2020, 15000000, "Apple TV", 6, 7),
+("Severance", 2022, 40000000, "Apple TV", 7, 8),
+("Fallout", 2024, 150000000, "Prime Video", 1, 9),
+("Dark", 2017, 18000000, "Netflix", 8, 10);
 
 insert into Temporadas(Numero, Nombre_Temporada, Descripcion, ID_Serie)
 values
@@ -119,21 +119,40 @@ values
 ("Lucy MacLean", 22, "F", 9),
 ("Jonas Kahnwald", 17, "M", 10);
 
-insert into Episodios(Numero, Nombre, Estreno, ID_Temporada, ID_Serie)
+insert into Episodios(Numero, Nombre, Estreno, Puntuacion, ID_Temporada, ID_Serie)
 values
-(101, "El mundo del revez", 2020, 1, 1),
-(102, "Dear Billy", 2017, 2, 1),
-(103, "Sistema", 2018, 3, 2),
-(104, "Muchos Tiempo", 2019, 4, 3),
-(105, "Connor's Wedding", 2021, 5, 4),
-(106, "El nombre del juego", 2023, 6, 5),
-(107, "Himno Nacional", 2024, 7, 6),
-(108, "Piloto", 2024, 8, 7),
-(109, "Lo que somos", 2026, 9, 8),
-(110, "El fin", 2011, 10, 9);
+(101, "El mundo del revez", 2020, 9.2, 1, 1),
+(102, "Dear Billy", 2017, 9.8, 2, 1),
+(103, "Sistema", 2018, 9.5, 3, 2),
+(104, "Mucho Tiempo", 2019, 9.9, 4, 3),
+(105, "Connor's Wedding", 2021, 10, 5, 4),
+(106, "El nombre del juego", 2023, 8.8, 6, 5),
+(107, "Himno Nacional", 2024, 8.1, 7, 6),
+(108, "Piloto", 2024, 8.5, 8, 7),
+(109, "Lo que somos", 2026, 9.7, 9, 8),
+(110, "El fin", 2011, 9.4, 10, 9);
 
-SELECT Genero, COUNT(Nombre) as Cantidad FROM Personajes GROUP BY Genero;
+select Genero, COUNT(Nombre) as Cantidad from Personajes GROUP BY Genero;
 
-SELECT Directores.Nombre FROM Directores
-INNER JOIN Series ON Directores.ID_Director = Series.ID_Director
-WHERE Series.Plataforma = 'Prime Video';
+select Directores.Nombre from Directores
+INNER JOIN Series on Directores.ID_Director = Series.ID_Director
+where Series.Plataforma = 'Prime Video';
+
+select Series.Plataforma, Personajes.Nombre from Series
+inner join Personajes on Series.ID_Serie = Personajes.ID_Serie
+where Series.Plataforma = "Netflix"
+order by Personajes.Edad desc;
+
+select max(Numero) as "Cantidad de Temporadas", Nombre_Temporada as Serie from Temporadas;
+
+select Personajes.Nombre from Personajes group by Personajes.ID_Serie;
+
+SELECT Nombre, Presupuesto from Series 
+order by Presupuesto desc
+limit 1;
+
+select Numero, Nombre, Puntuacion, Estreno from Episodios
+group by ID_Episodio
+having Estreno <= 2020
+order by Puntuacion desc
+limit 1;
