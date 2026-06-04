@@ -1,0 +1,50 @@
+DROP DATABASE IF EXISTS fg;
+CREATE DATABASE fg;
+USE fg;
+
+create table Laboratorios(
+	IDLaboratorio int not null auto_increment,
+    Nombre varchar(25),
+    Pais Varchar(25),
+    Telefono varchar(15)
+);
+
+create table Medicamentos(
+	IDMedicamento int not null auto_increment,
+    IDLaboratorio int not null,
+    foreign key (ID_Laboratorio) references Laboratorios(IDLAboratorio),
+    Nombre varchar(25),
+    Monodroga Varchar(25),
+    Precio int(6)
+);
+
+create table Lotes(
+	IDLote int not null auto_increment,
+    IDMedicamento int not null,
+    foreign key (IDMedicamento) references Medicamentos(IDMedicamento),
+    Stock enum("Agotado", "En Stock", "En camino"),
+    Precio int(6),
+    Vencimiento date,
+    Ubicacion varchar(20)
+);
+
+
+
+insert into Laboratorios(Nombre, Monodroga, Precio)
+values("Roemmers", "", 25000),
+("Gador", "", ),
+("Pfizer");
+
+insert into Medicamentos(IDLaboratorio, Nombre, Monodroga, Precio)
+values(),
+(),
+();
+
+insert into Lotes(IDMedicamento, Stock, Precio, Vecnimiento, Ubicacion)
+values(),
+(),
+();
+
+
+
+select Laboratorios.Nombre, 
