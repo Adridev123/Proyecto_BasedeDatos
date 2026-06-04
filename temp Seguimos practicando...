@@ -30,20 +30,20 @@ create table Lotes(
 
 
 
-insert into Laboratorios(Nombre, Monodroga, Precio)
-values("Roemmers", "", 25000),
-("Gador", "", ),
-("Pfizer");
+insert into Laboratorios(Nombre, Pais, Telefono)
+values("Roemmers", "Argentina", ""),
+("Gador", "Argentina", ""),
+("Pfizer", "Argentina", "");
 
 insert into Medicamentos(IDLaboratorio, Nombre, Monodroga, Precio)
-values(),
-(),
-();
+values(1, "", "", 45800),
+(2, "", "", 30700),
+(3, "", "", 25000);
 
 insert into Lotes(IDMedicamento, Stock, Precio, Vecnimiento, Ubicacion)
-values(),
-(),
-();
+values(1, 150, ),
+(1, ),
+(1);
 
 
 
