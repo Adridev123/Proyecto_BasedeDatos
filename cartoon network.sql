@@ -26,7 +26,7 @@ Titulo_Episodio varchar(25),
 ID_Serie int,
 foreign key (ID_Serie) references Series(ID_Serie),
 Duracion_min int(10),
-Raiting int(10)
+Raiting float(10)
 );
 
 create table Habilidades(
@@ -54,6 +54,14 @@ foreign key (ID_Personaje) references Personajes(ID_Personaje),
 Valor_Subasta int(10)
 );
 
+create table Habilidades_Especiales(
+ID_Habilidad int primary key auto_increment,
+ID_Personaje int,
+foreign key (ID_Personaje) references Personajes(ID_Personaje),
+Nombre_Habilidad varchar(25),
+Tipo_Habilidad varchar(25)
+);
+
 use series;
 
 insert into Series(Nombre, Año_Estreno, Creador)
@@ -78,8 +86,46 @@ values
 ("Coraje", "Protagonista", 40, 5),
 ("Dexter", "Protagonista", 70, 6);
 
+insert into Episodios(Titulo_Episodio, ID_Serie, Duracion_min, Raiting)
+values
+("¡Ven Conmigo!", 1, 44, 10),
+("Y entonces llegó Ben", 2, 23, 9.7),
+("Mandy la despiadada", 3, 7, 7.5),
+("Salida 9B", 4, 23, 9.7),
+("El granjero acuático", 5, 23, 7.8),
+("Dexter es promedio", 6, 7, 7.3);
+
+insert into Objetos_Misticos(Nombre, ID_Personaje, Valor_Subasta)
+values
+("Espada Dorada", 1, 5),
+("Omnitrix", 4, 500000000),
+("Biologia y cibernetica", 5, 85000000),
+("Hoz magica", 6, 150000000),
+("Biologia Mutante", 9, 35000000),
+("Inventos", 10, 150000000);
+
+insert into Habilidades_Especiales(ID_Personaje, Nombre_Habilidad, Tipo_Habilidad)
+values
+(2, "Poderes Elasticos", "Fisica"),
+(3, "Poderes de Criomancia", "Combate"),
+(7, "Habilidades Cosmicas", "Combate"),
+(8, "Habilidades Cosmicas", "Combate"),
+
 select Nombre, Creador from Series
 order by Nombre asc;
 
 select Nombre, Rol from Personajes
-where Nombre like "F%" or "B%";
+where Nombre like "F%" or Nombre like"B%";
+
+select Duracion_min, Raiting from Episodios
+where Duracion_min > 11 and Raiting > 8.5;
+
+select Nombre from Objetos_Misticos
+where Nombre like "Espada%" or Nombre like "Anillo%";
+
+select min(Nivel_Energia) as Energia_Minima, max(Nivel_Energia) as Energia_Maxima from Personajes
+where Rol = "Antagonista"
+limit 2;
+
+select Tipo_Habilidad, count(Tipo_Habilidad) from Habilidades_Especiales
+
