@@ -89,11 +89,17 @@ values
 insert into Episodios(Titulo_Episodio, ID_Serie, Duracion_min, Raiting)
 values
 ("¡Ven Conmigo!", 1, 44, 10),
+("Amor ardiente", 1, 11, 8.6),
 ("Y entonces llegó Ben", 2, 23, 9.7),
+("La venganza", 2, 22, 9.2),
 ("Mandy la despiadada", 3, 7, 7.5),
+("Las sombrías aventuras de Los chicos del barrio", 3, 25, 7.3),
 ("Salida 9B", 4, 23, 9.7),
+("Cuentos de Terror del Parque II", 4, 22, 8.4),
 ("El granjero acuático", 5, 23, 7.8),
-("Dexter es promedio", 6, 7, 7.3);
+("La maldición del Rey Ramsés", 5, 11, 8.7),
+("Dexter es promedio", 6, 7, 7.3),
+("El rival de Dexter", 6, 7, 7.9);
 
 insert into Objetos_Misticos(Nombre, ID_Personaje, Valor_Subasta)
 values
@@ -109,7 +115,7 @@ values
 (2, "Poderes Elasticos", "Fisica"),
 (3, "Poderes de Criomancia", "Combate"),
 (7, "Habilidades Cosmicas", "Combate"),
-(8, "Habilidades Cosmicas", "Combate"),
+(8, "Habilidades Cosmicas", "Combate");
 
 select Nombre, Creador from Series
 order by Nombre asc;
@@ -128,4 +134,19 @@ where Rol = "Antagonista"
 limit 2;
 
 select Tipo_Habilidad, count(Tipo_Habilidad) from Habilidades_Especiales
+group by Tipo_Habilidad;
 
+select Nombre, Nivel_Energia from Personajes
+order by Nivel_Energia desc;
+
+select ID_Personaje, Valor_Subasta from Objetos_Misticos
+where Valor_Subasta > 5000
+order by Valor_Subasta desc;
+
+select ID_Serie, avg(Raiting) as Promedio_Audiencia from Episodios
+group by ID_Serie
+having avg(Raiting) > 7.5;
+
+select ID_, count(ID_Personaje) from Personajes
+where Nivel_Energia > 50
+group by ID_Serie;
