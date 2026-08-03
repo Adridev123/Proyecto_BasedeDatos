@@ -6,5 +6,5 @@ Integrantes:
 
 Adriel Fux
 Santino Mendez
-Elena Martinez
+Elena Martinez (elena.martinezet32@gmail.com)
 Benicio Longo
