@@ -11,6 +11,6 @@ Santino Mendez  santino.mendezet32@gmail.com
 Elena Martinez  elena.martinezet32@gmail.com
 Benicio Longo  benicio.cardosot32@gmail.com
 
-
+Link de proyectos: https://interdisciplinario4to.gt.tc/?i=2
 
 Les mande a todos por mail la invitacion para que se unan al Jira
