@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(59, 163, 132);
+}
+
+.titulo{
+    text-align: center;
+}
+
+.presentacion{
+    font-size: 80%;
+}
+
+.spinner-grow{
+    width: 300px;
+    margin-bottom: 100%;
+    height: 300px;
+}
+
+#ff{
+    margin-right: 40%;
+}
+
+#elvis{
+    margin: 2%;
+    margin-left: 68%;
+    width: 20%;
+}
