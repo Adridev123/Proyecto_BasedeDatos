@@ -1,0 +1,19 @@
+1. Verdadero ó Falso (Justificar las falsas)
+
+a. Un Where puede funcionar como un Inner join en algunas ocasiones
+Verdadero
+
+b. No puedo crear una tabla sin una Primary Key
+Verdaderoc.
+
+c. Las Subconsulta solamente las puedo usar con Where
+Falso, se puede usar en el Having de un inner join o ya desde el select, hsta casi cualquier parte de una consulta de sql
+
+d. En el From puedo poner más de una tabla si es necesario
+Verdadero
+
+
+2. Responder:
+a. ¿Cuál es la diferencia entre Where y Having?
+
+La diferencia entre el Where y el Having es que el Having es un where dentro del inner join
