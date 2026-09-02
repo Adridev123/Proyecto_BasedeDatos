@@ -41,3 +41,27 @@ values
 (1, 1, "2026-10-07", "2026-10-10"),
 (2, 2, "2026-10-05", "2026-10-10"),
 (3, 3, "2026-10-15", "2026-10-18");
+
+insert into Recompensas(IDSesion, IDObjeto, Experiencia, Dinero)
+values
+(1, 1, 3000, 4000),
+(2, 2, 400, 6000),
+(3, 3, 1201, 8000);
+
+insert into ProgresoFinal(IDZona, IDRecompensa, IDSesion, Puntaje)
+values
+(1, 1, 1, 19),
+(2, 2, 2, 2000),
+(3, 3, 3, 7000);
+
+insert into RegistrosEventos(IDSesion, IDZona, TiempoJuego, Tipo)
+value
+(1, 1, "08:30:00", "Error"),
+(2, 2, "11:20:00", "Advertencia"),
+(3, 3, "09:00:40", "Activacion");
+
+insert into Descubrimientos(IDSesion, IDZona)
+values
+(1, 1),
+(2, 1),
+(3, 3);
