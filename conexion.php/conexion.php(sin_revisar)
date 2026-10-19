@@ -13,11 +13,3 @@ mysqli_set_charset($conexion, "utf8mb4");
 echo "Conexion exitosa";
 
 ?>
-
-//version2
-
-PHP
-<?php
-$conexion = new mysqli("localhost", "root", "", "Consecionario");
-if ($conexion->connect_error) die("Error de conexión");
-?>
