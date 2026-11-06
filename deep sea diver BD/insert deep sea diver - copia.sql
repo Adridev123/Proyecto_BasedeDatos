@@ -65,3 +65,64 @@ values
 (1, 1),
 (2, 1),
 (3, 3);
+
+DELIMITER //
+CREATE PROCEDURE sp_VerJugador(
+    IN p_IDJugador INT
+)
+BEGIN
+    SELECT IDJugador, Usuario, Nivel, Dinero 
+    FROM Jugadores 
+    WHERE IDJugador = p_IDJugador;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE sp_ReporteConsumoOxigeno()
+BEGIN
+    SELECT 
+        Z.IDZona,
+        Z.Nombre AS NombreZona,
+        Z.ProfundidadInicial,
+        Z.ProfundidadFinal,
+        CO.TasaConsumo
+    FROM Zonas Z
+    INNER JOIN ConsumoOxigeno CO ON Z.IDZona = CO.IDZona
+    ORDER BY CO.TasaConsumo DESC;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_ModificarDineroJugador(
+    IN p_IDJugador INT,
+    IN p_Monto INT
+)
+BEGIN
+    UPDATE Jugadores 
+    SET Dinero = Dinero + p_Monto 
+    WHERE IDJugador = p_IDJugador;
+    
+    SELECT IDJugador, Usuario, Dinero 
+    FROM Jugadores 
+    WHERE IDJugador = p_IDJugador;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DescubrimientosPorUsuario(
+    IN p_Usuario VARCHAR(25)
+)
+BEGIN
+    SELECT DISTINCT
+        J.Usuario,
+        Z.Nombre AS ZonaDescubierta,
+        Z.NivelPresion,
+        Z.Visibilidad
+    FROM Jugadores J
+    INNER JOIN Sesiones S ON J.IDJugador = S.IDJugador
+    INNER JOIN Descubrimientos D ON S.IDSesion = D.IDSesion
+    INNER JOIN Zonas Z ON D.IDZona = Z.IDZona
+    WHERE J.Usuario = p_Usuario;
+END //
+DELIMITER ;
