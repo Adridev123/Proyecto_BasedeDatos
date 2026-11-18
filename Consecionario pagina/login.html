@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Fera Motors</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+
+            <h1>FERA MOTORS</h1>
+
+            <h2>Bienvenido de nuevo</h2>
+            <p class="subtitle">Inicia sesión en tu cuenta</p>
+
+            <form action="php/logica_login.php" method="POST">
+
+                <label for="usuario">Email o nombre de usuario</label>
+                <input type="text" id="usuario" name="usuario"
+                       placeholder="Enter your email or username" required>
+
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Enter your password" required>
+
+                <button type="submit">Iniciar sesión</button>
+
+            </form>
+
+            <div class="separator">
+                <span>O</span>
+            </div>
+
+            <a href="php/login_google.php" class="social-button">
+                Continuar con Google
+            </a>
+
+            <a href="php/login_apple.php" class="social-button">
+                Continuar con Apple
+            </a>
+
+            <a href="php/login_microsoft.php" class="social-button">
+                Continuar con Microsoft
+            </a>
+
+            <p class="change-page">
+                No tienes una cuenta? 
+                <a href="registro.html">Registrarte</a>
+            </p>
+
+            <a href="index.html" class="back-link">Volver al inicio</a>
+
+        </div>
+    </div>
+
+</body>
+</html>
