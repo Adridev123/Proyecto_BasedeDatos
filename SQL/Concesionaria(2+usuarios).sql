@@ -147,18 +147,3 @@ Estado enum("Entregado", "Cancelado", "Atrasado", "En viaje")
 );
 
 
-create table Usuarios (
-IDUsuario int primary key auto_increment,
-Nombre varchar(100) not null,
-Usuario varchar(50) not null,
-Contaseña varchar(255) not null,
-Foto varchar(255) default null
-);
-
-create table Clientes(
-IDCliente int primary key auto_increment not null,
-Nombre varchar(10),
-Apellido varchar(10),
-IDUsuario int,
-foreign key(IDUsuario) references Usuarios(IDUsuario)
-);
