@@ -1,0 +1,134 @@
+/* --- ESTILOS GENERALES Y RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- SECCIÓN DE CONTENIDO EDITORIAL (GRID ALTERNADO) --- */
+.editorial-section {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Inversión de columnas para el efecto zigzag de la imagen */
+.row.reverse {
+    direction: rtl;
+}
+
+.row.reverse .text-block {
+    direction: ltr; /* Restaurar dirección de lectura de izquierda a derecha */
+}
+
+.text-block h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.text-block p {
+    color: #4b5563;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.img-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px; /* Bordes redondeados como en el mockup */
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* --- SECCIÓN DE MODELOS / PRODUCTOS --- */
+.models-section {
+    background-image: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+    padding: 60px 20px;
+    border-radius: 8px;
+}
+
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.model-card {
+    background-color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.model-card h3 {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #111827;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.model-card img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.btn-view {
+    background-color: #d1d5db;
+    color: #374151;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s ease;
+    width: 80%;
+}
+
+.btn-view:hover {
+    background-color: #9ca3af;
+    color: #111827;
+}
+
+/* --- RESPONSIVIDAD PARA MÓVILES --- */
+@media (max-width: 768px) {
+    .row, .row.reverse {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        direction: ltr;
+    }
+
+    .text-block {
+        text-align: center;
+    }
+}
