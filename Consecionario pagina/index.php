@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Fera Motors</title>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <?php include 'navbar.php'; ?>
+    <!-- NAVBAR -->
+
+    <!-- Contenido Principal -->
+    <main class="container">
+
+        <!-- Sección Editorial (Bloques de información con fotos) -->
+        <section class="editorial-section">
+
+            <!-- Bloque 1 -->
+            <article class="row">
+                <div class="text-block">
+                    <h2>Tenés una Fera, sos parte.</h2>
+                    <p>En Fera Motors, queremos que seas parte de nuestra comunidad. Descubrí novedades, conocé nuestros modelos y disfrutá de una experiencia pensada para quienes comparten la pasión por las dos ruedas. Porque ser parte de Fera es mucho más que tener un vehículo; es disfrutar cada recorrido y vivir tu pasión todos los días.</p>
+                </div>
+                <div class="img-block">
+                    <img src="imagenes/camion1.png" alt="Furgón Fera">
+                </div>
+            </article>
+
+            <!-- Bloque 2 (Invertido en orden visual) -->
+            <article class="row reverse">
+                <div class="text-block">
+                    <h2>Fera Garantía: Nos mueve tu tranquilidad</h2>
+                    <p>En Fera Motors, sabemos lo importante que es disfrutar de tu auto con confianza y seguridad. Por eso, trabajamos para ofrecerte productos de calidad y un servicio de mantenimiento confiable. Acercate a nuestros concesionarios oficiales para mantener tu auto en las mejores condiciones y seguir disfrutando cada kilómetro.</p>
+                </div>
+                <div class="img-block">
+                    <img src="imagenes/Auto1.png" alt="SUV Fera Azul">
+                </div>
+            </article>
+
+            <!-- Bloque 3 -->
+            <article class="row">
+                <div class="text-block">
+                    <h2>Servicios Conectados</h2>
+                    <p>Llevá tu experiencia al siguiente nivel. Con Fera Motors, accedé a información y novedades sobre tu automóvil, conocé nuestros servicios y encontrá todo lo que necesitás para disfrutar de cada viaje. Queremos que tengas una experiencia simple, cómoda y conectada con tu pasión. Conocé Fera Motors y descubrí todo lo que tenemos para vos.</p>
+                </div>
+                <div class="img-block">
+                    <img src="imagenes/Auto1.2.png" alt="Pick-up Fera">
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Sección de Modelos (Tarjetas de autos en la parte inferior) -->
+        <section class="models-section">
+            <div class="models-grid">
+
+                <!-- Tarjeta Corolla -->
+                <div class="model-card">
+                    <h3>Corolla</h3>
+                    <img src="imagenes/AutoBlanco 4.png" alt="Toyota Corolla">
+                    <a href="corolla.html" class="btn-view">Ver modelo</a>
+                </div>
+
+                <!-- Tarjeta Yaris -->
+                <div class="model-card">
+                    <h3>Yaris Hatchback</h3>
+                    <img src="imagenes/AutoRojo 4.png" alt="Toyota Yaris">
+                    <a href="yaris.html" class="btn-view">Ver modelo</a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Piedepagina-->
+    <?php include 'PieDePagina.php'; ?>
+    <!--Piedepagina-->
+</body>
+</html>
