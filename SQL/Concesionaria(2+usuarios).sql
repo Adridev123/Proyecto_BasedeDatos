@@ -64,8 +64,8 @@ Apellido varchar(10)
 
 create table Usuarios (
 IDUsuario int primary key auto_increment,
-Nombre_Usuario varchar(50) not null,
-Contaseña varchar(255) not null,
+Nombre varchar(50) not null,
+Contasenia varchar(255) not null,
 Foto varchar(255) default null,
 correo varchar(255) not null,
 );
