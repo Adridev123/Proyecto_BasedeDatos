@@ -1,51 +1,115 @@
 <?php
-// Barra de navegación: cambia según si hay sesión iniciada.
-// Se incluye desde index.php, IniciarSesion.php, Registrarse.php, MiCuenta.php y EditarPerfil.php
+// Barra de navegación de Fera Motors (negra, sin buscador)
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$logueado     = isset($_SESSION["usuario_id"]);
-$nombre       = $logueado ? ($_SESSION["nombre"] ?? "") : "";
-$primerNombre = ($nombre !== "") ? explode(" ", $nombre)[0] : "Mi cuenta";
+$logueado = isset($_SESSION["usuario_id"]);
 ?>
 <link rel="stylesheet" href="css/navbar.css">
 
-<nav class="navbar navbar-expand-lg barra-principal">
-    <div class="container-fluid">
+<div class="fm-barra">
 
-        <a class="navbar-brand" href="index.php">FERA MOTORS</a>
+    <a href="index.php" class="fm-logo">FERA MOTORS</a>
 
-        <div class="d-flex align-items-center ms-auto">
+    <nav class="fm-menu">
 
-            <?php if ($logueado): ?>
+        <details class="fm-item">
+            <summary>Modelos <span class="fm-flecha">▾</span></summary>
+            <div class="fm-desplegable">
+                <a href="corolla.html">Corolla</a>
+                <a href="yaris.html">Yaris Hatchback</a>
+            </div>
+        </details>
 
-                <div class="dropdown">
-                    <button class="btn btn-perfil dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="icono-perfil">
-                            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                            </svg>
-                        </span>
-                        <span class="nombre-perfil"><?php echo htmlspecialchars($primerNombre); ?></span>
-                    </button>
+        <details class="fm-item">
+            <summary>Compra <span class="fm-flecha">▾</span></summary>
+            <div class="fm-desplegable">
+                <a href="#">Financiación</a>
+                <a href="#">Usados</a>
+            </div>
+        </details>
 
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="MiCuenta.php">Mi cuenta</a></li>
-                        <li><a class="dropdown-item" href="EditarPerfil.php">Editar perfil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="php/logout.php">Cerrar sesión</a></li>
-                    </ul>
+        <details class="fm-item">
+            <summary>Alquilá <span class="fm-flecha">▾</span></summary>
+            <div class="fm-desplegable">
+                <a href="#">Alquiler mensual</a>
+                <a href="#">Alquiler corto plazo</a>
+            </div>
+        </details>
+
+        <details class="fm-item">
+            <summary>Mi Fera <span class="fm-flecha">▾</span></summary>
+            <div class="fm-desplegable">
+                <a href="#">Servicios</a>
+                <a href="#">Garantía</a>
+            </div>
+        </details>
+
+        <details class="fm-item">
+            <summary>Descubrí <span class="fm-flecha">▾</span></summary>
+            <div class="fm-desplegable">
+                <a href="#">Novedades</a>
+                <a href="#">Concesionarios</a>
+            </div>
+        </details>
+
+        <details class="fm-item">
+            <summary>Contactanos <span class="fm-flecha">▾</span></summary>
+            <div class="fm-desplegable">
+                <a href="#">Teléfono</a>
+                <a href="#">Correo</a>
+            </div>
+        </details>
+
+    </nav>
+
+    <div class="fm-usuario-zona">
+        <?php if ($logueado): ?>
+            <!-- Ícono de usuario con menú -->
+            <details class="fm-item fm-usuario">
+                <summary class="fm-icono" aria-label="Mi cuenta">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>
+                    </svg>
+                </summary>
+                <div class="fm-desplegable fm-desplegable-derecha">
+                    <a href="MiCuenta.php">Mi cuenta</a>
+                    <a href="EditarPerfil.php">Editar perfil</a>
+                    <a href="php/logout.php" class="fm-salir">Cerrar sesión</a>
                 </div>
-
-            <?php else: ?>
-
-                <a class="nav-link-auth" href="IniciarSesion.php">Iniciar sesión</a>
-                <a class="btn-registro" href="Registrarse.php">Registrarse</a>
-
-            <?php endif; ?>
-
-        </div>
+            </details>
+        <?php else: ?>
+            <a href="IniciarSesion.php" class="fm-icono" aria-label="Iniciar sesión">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+            </a>
+        <?php endif; ?>
     </div>
-</nav>
+
+</div>
+
+<script>
+    // Solo un menú abierto a la vez: al abrir uno, se cierran los demás
+    document.querySelectorAll('.fm-barra details').forEach(function (menu) {
+        menu.addEventListener('toggle', function () {
+            if (menu.open) {
+                document.querySelectorAll('.fm-barra details').forEach(function (otro) {
+                    if (otro !== menu) otro.open = false;
+                });
+            }
+        });
+    });
+
+    // Tocar cualquier parte de la página fuera de la barra cierra los menús
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.fm-barra')) {
+            document.querySelectorAll('.fm-barra details').forEach(function (menu) {
+                menu.open = false;
+            });
+        }
+    });
+</script>
