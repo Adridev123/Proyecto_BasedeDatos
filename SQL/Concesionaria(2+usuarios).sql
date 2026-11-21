@@ -67,7 +67,7 @@ IDUsuario int primary key auto_increment,
 Nombre varchar(50) not null,
 Contasenia varchar(255) not null,
 Foto varchar(255) default null,
-correo varchar(255) not null,
+correo varchar(255) not null
 );
 
 create table Clientes(
