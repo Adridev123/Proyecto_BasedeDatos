@@ -1,0 +1,115 @@
+/* Barra de navegación de Fera Motors: negra con letras blancas */
+.fm-barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 14px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+.fm-logo {
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.fm-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* Cada item del menú (cuando es <details>) */
+.fm-item {
+    position: relative;
+}
+
+.fm-item summary {
+    list-style: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 0.95rem;
+    user-select: none;
+}
+
+.fm-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.fm-item summary:hover {
+    text-decoration: underline;
+}
+
+.fm-flecha {
+    font-size: 0.7rem;
+}
+
+/* Lista desplegable */
+.fm-desplegable {
+    position: absolute;
+    left: 0;
+    top: 34px;
+    min-width: 200px;
+    background-color: #000000;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 1100;
+}
+
+.fm-desplegable-derecha {
+    left: auto;
+    right: 0;
+}
+
+.fm-desplegable a {
+    display: block;
+    padding: 10px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.fm-desplegable a:hover {
+    background-color: #222222;
+    text-decoration: underline;
+}
+
+.fm-desplegable a.fm-salir {
+    border-top: 1px solid #333333;
+}
+
+/* Usuario */
+.fm-usuario-zona {
+    display: flex;
+    align-items: center;
+}
+
+.fm-icono {
+    display: inline-flex;
+    color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+}
+
+.fm-icono:hover {
+    color: #cccccc;
+}
+
+.fm-usuario summary {
+    display: inline-flex;
+}
+
+/* En pantallas chicas se oculta el menú central */
+@media (max-width: 900px) {
+    .fm-menu {
+        display: none;
+    }
+}
