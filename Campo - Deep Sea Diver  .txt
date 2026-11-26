@@ -1,0 +1,337 @@
+﻿Deep Sea Diver
+
+
+Integrantes:
+Elena Martinez Uriarte
+Adriel Fux
+Santino Mendez
+Benicio Longo
+
+
+En este documento se habla de lo siguiente:
+información de monogame, diccionario de datos, nombre de los campos, ver como funciona el juego y que requisitos se busca cumplir, empezar con monogame 
+
+
+Fuentes:
+https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame/index.html
+
+
+Nombres de campos:
+
+
+Para empezar decidí investigar de toda la mecánica del juego y su forma de operar, mire varias veces el der que realizó uno de mis compañeros de grupo y investigue los nombres de algunos campo o tablas que me eran confusos (no están todos los campos), son los siguientes:
+
+
+
+
+
+
+1. Discoveries (Descubrimientos)
+
+
+- Información relacionada con los descubrimientos que realiza el jugador.
+
+
+2. Players (Jugadores)
+
+
+- Money: dinero del jugador.
+- Level: nivel del jugador.
+- User: nombre de usuario.
+
+
+3. Difficulties (Dificultades)
+
+
+- Difficulty: dificultad seleccionada.
+- MobRate: frecuencia de aparición de enemigos.
+- SpecialBoss: jefe especial asociado a la dificultad.
+
+
+4. Sessions (Sesiones)
+
+
+- StartDate: fecha de inicio de la partida.
+- FinishDate: fecha de finalización de la partida.
+
+
+5. EventLogs (Registro de eventos)
+
+
+- GameTime: tiempo de juego en el que ocurre un evento.
+- Type: tipo de evento registrado.
+
+
+6. SessionEquipment (Equipamiento de sesión)
+
+
+- ActivationTime: momento en el que se activa un equipamiento.
+- DeactivationTime: momento en el que se desactiva.
+
+
+7. FinalProgress (Progreso final)
+
+
+- Score: puntaje obtenido por el jugador.
+
+
+8. Rewards (Recompensas)
+
+
+- Experience: experiencia obtenida.
+- Money: dinero recibido.
+
+
+9. Equipment (Equipamiento)
+
+
+- Name: nombre del equipamiento.
+- Type: tipo o rareza.
+- OxygenCapacity: capacidad de oxígeno.
+
+
+
+
+
+
+
+
+- LightDuration: duración de la iluminación.
+- PressureResistance: resistencia a la presión.
+- Cost: costo del equipamiento.
+
+
+10. Zones (Zonas)
+
+
+- StartDepth: profundidad inicial.
+- FinalDepth: profundidad final.
+- PressureLevel: nivel de presión.
+- Visibility: visibilidad de la zona.
+
+
+11. Items (Objetos)
+
+
+- Type: tipo o rareza del objeto.
+- SellingCost: precio de venta.
+- PurchaseCost: precio de compra.
+
+
+12. OxygenConsumption (Consumo de oxígeno)
+
+
+- ConsumptionRate: tasa de consumo de oxígeno.
+
+
+
+
+Una vez que termine de entender un poco más el contexto y estructura del juego decidi  tomar en cuenta la forma de crear estos tipo de juegos por eso empeze a investigar que era el monogame como pidió el profe:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Monogame 
+
+
+¿Cómo empezó?
+En 2009, José Antonio Leal de Farias presentó XNA Touch , un proyecto de código abierto cuyo objetivo era que los juegos de XNA fueran compatibles con dispositivos iOS. Esto marcó el inicio de lo que más tarde se convertiría en MonoGame. Dominique Louis se unió al proyecto en 2009 y pronto asumió el liderazgo a tiempo completo, impulsando su desarrollo inicial y su expansión. El proyecto atrajo a otros desarrolladores, como Tom Spilman , interesados en ampliar su alcance y su difusión.
+
+
+El lanzamiento oficial de MonoGame tuvo lugar en 2011, como una versión de código abierto de XNA. Si bien conservaba la misma API que XNA, su compatibilidad multiplataforma se amplió para incluir Windows, macOS, Linux, iOS, Android, Xbox y PlayStation. A pesar de que Microsoft descontinuó XNA en 2013, MonoGame continuó creciendo y desarrollándose. En 2014 , Steve Williams y Tom Spilman se hicieron cargo del mantenimiento del proyecto . Para impulsar su desarrollo futuro, se creó la Fundación MonoGame el 29 de septiembre de 2023.
+
+
+¿Cuál es su propósito?
+
+
+Siguiendo la estela de XNA, MonoGame es un framework que permite a los desarrolladores crear sus propias herramientas. Proporciona los componentes básicos para diseñar el juego, los motores y/o las herramientas. Con un enfoque de desarrollo de juegos basado en el código, MonoGame no incluye editores ni interfaces predefinidas; en cambio, ofrece a los desarrolladores la libertad de crear su propio entorno de trabajo.
+
+
+API
+
+
+En esencia, MonoGame ofrece un conjunto de bibliotecas y API para gestionar tareas comunes de desarrollo de juegos. Estas incluyen:
+
+
+Renderizado de gráficos : MonoGame admite el renderizado en 2D y 3D mediante su API gráfica. Esta API proporciona procesamiento por lotes de sprites para gráficos 2D, una canalización 3D flexible y sombreadores para efectos visuales personalizados.
+Gestión de la entrada : Se admite la entrada mediante teclado, ratón, mandos y pantallas táctiles, lo que permite el desarrollo de juegos para cualquier plataforma y diferentes estilos de juego.
+Audio : Un sistema de audio completo que permite crear efectos de sonido y reproducir música, con soporte para numerosos formatos de audio.
+Canalización de contenido : Un flujo de trabajo listo para usar para importar y procesar recursos del juego, como texturas, modelos y audio, y compilarlos a un formato óptimo para la plataforma de destino del juego.
+Biblioteca matemática : Una biblioteca matemática optimizada específicamente para el desarrollo de videojuegos, que proporciona funciones y operaciones matemáticas esenciales.
+Multiplataforma
+Una de las principales ventajas de MonoGame es su compatibilidad multiplataforma. Los juegos creados con MonoGame son compatibles con una variedad de plataformas
+
+
+MonoGame está diseñado y desarrollado en C#. Este es el lenguaje de programación oficial compatible con la documentación, los ejemplos y los foros de la comunidad. Sin embargo, MonoGame no se limita exclusivamente a C#. Como biblioteca .NET, puede utilizarse con cualquier lenguaje compatible con .NET, incluyendo Visual Basic y F#, aunque esto puede llevar a mas limitaciones.
+
+
+
+
+Una vez que termine de comprender el monogame procedí a elaborar el Diccionario de Datos con la ayuda del DER realizado por mi compañero haciendo cada una de las tablas con sus respectivos campos, más una lista detallada de cada parte para que cualquier entidad externa pueda interpretar la información deseada. 
+
+
+
+
+
+
+
+
+
+
+
+
+Diccionario de Datos
+
+
+Permite que cualquier persona externa o del equipo pueda entender claramente qué información contiene el sistema, guardando información como nombre de campo, longitud,tipo de dato, descripción y contenido
+
+
+esto es lo primero que logre hacer
+
+
+  
+
+
+
+Para llegar a esto:
+
+
+  
+
+
+
+tome en cuenta varias cosas como el tipo de datos que usamos como 
+* int: guarda números enteros con un rango de 2 mil millones
+* varchar: almacena texto de longitud variable o sea elástico. ej: nombres, apellidos, contraseñas, emails
+* decimal: números con decimales aproximados su sintaxis es de decimal(10,2)
+* float: almacena números con decimales aproximados (aunque tiene errores de redondeoo)
+* date (año, mes, dia) se usa en fechas como dice el nombre. ej: fecha de nacimiento, fecha de elaboración, fecha de vencimiento
+* time (hh:mm:ss) se usa para las horas o duraciones de algo ej:  horario de entrada, duración de película.
+
+
+la tabla se ve así:
+
+
+nombre de campo
+	longitud
+	tipo de dato
+	descripción
+	contenido
+	
+
+
+
+donde longitud sería cuánto rango tiene el tipo de dato como varchar(50) su rango es: 50
+descripción: es una pequeña descripción de que hace el campo en esa tabla por ejemplo si es PK o FK o si tiene una participación diferente como: money -> es el dinero de el jugador
+contenido: es  lo que se muestra en el registro como 1, “manzana”, “jazmín”, ‘2026-04-04’ 
+
+
+
+
+
+
+
+
+Requisitos para monogame
+
+
+Mecánicas del Juego: 1 nivel funcional que incluya movimiento del personaje, generación de elementos/obstáculos, sistema de vidas, puntaje y pantalla de Game Over.
+Estructura de Datos Manual: Implementación obligatoria de una sola estructura lineal sobre arrays hecha a mano (Pila o Cola Circular), eliminando el uso de colecciones nativas de .NET (List<>, Stack<>, etc.).
+Algoritmo a Mano: Un algoritmo clásico programado paso a paso: Ordenamiento por Burbuja (para la tabla de posiciones) o Búsqueda Secuencial (para localización de datos/partidas).
+Recursos Gráficos: Uso exclusivo de spritesheets descargados directamente de la web (Kenney.nl, OpenGameArt). Queda descartada la edición o creación gráfica propia para optimizar el tiempo de desarrollo.
+Persistencia Mixta: Archivos .conf o .dat para la configuración y puntajes locales del juego (responsabilidad de AED). Las consultas SQL serán estructuradas desde la materia articulada (Base de Datos), realizándose desde C# únicamente la llamada a la conexión con MySqlConnector.
+Testing y Documentación: Se simplifica la entrega formal a un README.md técnico en el repositorio Git y la carpeta de campo sintetizada individual.
+
+
+
+
+
+
+
+
+
+
+Primer contacto con monogame
+
+
+Para comenzar a trabajar con monogame primero tuve que crear un proyecto nuevo en visual studio 2026.
+estos fueron los pasos que hice:
+1. elegí la opción Crear un nuevo proyecto.
+2. Busque a monogame entre las plantillas disponibles.
+3. Elegí MonoGame Cross-Platform DesktopGL Application según el que dijo el profe.
+4. Le puse un nombre al proyecto.
+5. Presioné Crear.
+6. Finalmente ejecuté el proyecto con F5 para comprobar que funcionara correctamente.
+
+
+Una vez creado el proyecto comencé a investigar cómo podía agregar un personaje y hacer que se moviera dentro de la ventana del juego.
+Mi objetivo inicial fue importar una imagen del personaje y aprender a dibujarla en pantalla. Después busqué la manera de moverla utilizando las flechas del teclado y evitar que saliera de los límites de la ventana.
+para hacer esto primero tenía que:
+Conseguir un sprite
+Para poder representar al personaje necesité conseguir una imagen llamada sprite.
+
+
+Un sprite es una imagen que representa a un personaje o a cualquier otro elemento de un videojuego. Para este primer acercamiento busqué una imagen sencilla en formato PNG y con fondo transparente.
+
+
+Una de las páginas que encontré para conseguir recursos gráficos fue "Kenney.nl". Allí se pueden encontrar imágenes y otros recursos que sirven para desarrollar videojuegos.
+Importar la imagen al proyecto
+Después de conseguir la imagen investigué cómo podía agregarla al proyecto. Para esto tuve que conocer el funcionamiento del Content Pipeline de MonoGame.
+El Content Pipeline es un sistema que permite preparar las imágenes y otros recursos antes de utilizarlos dentro del juego.
+
+
+Para importar la imagen seguí estos pasos:
+
+
+1. Localicé el proyecto de contenido.
+
+
+Primero busqué en el Explorador de soluciones el proyecto o la carpeta llamada Content. Dependiendo de la plantilla utilizada puede aparecer como un proyecto independiente o como un archivo llamado "Content.mgcb".
+
+
+2. Agregué el archivo PNG.
+
+
+Si el proyecto tenía un archivo "Content.mgcb" podía abrirlo con la herramienta MonoGame Pipeline Tool. Desde allí debía seleccionar Edit a Add a Existing Item para agregar la imagen que había conseguido.
+
+
+3. Compilé el contenido.
+
+
+Una vez agregada la imagen utilicé la opción Build de la herramienta Pipeline. Esto permite preparar el archivo para que pueda utilizarse desde el código del juego.
+
+
+Si la compilación termina sin errores significa que el recurso está preparado para ser cargado.
+
+
+Durante esta parte también tuve en cuenta que no todos los proyectos de MonoGame tienen exactamente la misma estructura. Por eso la forma de importar una imagen puede variar según la plantilla que se haya elegido al crear el proyecto.
+
+
+
+
+
+
+Corregir
+estuve corrigiendo el DER pero son cosas mínimas nada de lógica que complique todo sino para que se vea ordenado
+
+
+ en la clave foránea que vincula la tabla zone a otras tablas, tuve que cambiar iddepthzone a idzone igual no cambia nada pero es más fácil leer y entender desde mi punto de vista, después lo que hice fue solo unir con la flecha la tabla discoveries y zone, ya que no estaban unidas y menos se entendía con la FK iddepthzone 
+
+
+
+
+Algoritmo a Mano: Un algoritmo clásico programado paso a paso: Ordenamiento por Burbuja (para la tabla de posiciones) o Búsqueda Secuencial (para localización de datos/partidas).
